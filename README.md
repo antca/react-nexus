@@ -1,5 +1,4 @@
-# React Nexus 4
-*Page still in development.*
+# React Nexus
 
 ## Minimal React Nexus boilerplate
 ```js
@@ -116,40 +115,3 @@ export default stores(({ userId }) => ({
 
 ## 5. Constructs HTML component
 By applicating `React.renderToString` on root component.
-
-## Selenium's Tests
-
-### Pre-requisites:
-
-Selenium's config will run tests with 2 default browsers:
-
-- Chrome
-- Firefox
-
-So you have to install both browser or change the following configuration:
-
-- `/config/wdio/${env}/wdio.config.js`
-
-```js
-capabilities: [{
-  browserName: '${browser1}',
-}, {
-  browserName: '${browser2}',
-}],
-```
-
-You can check [platform-configurator](https://wiki.saucelabs.com/display/DOCS/Platform+Configurator#/) to configure your own platform.
-
-
-In order to perform tests with Selenium, just run the automated test :
-```bash
-gulp test-selenium
-```
-
-### Tips
-
-If you want run selenium headlessly, on linux you can use `xvfb` as:
-```bash
-xvfb-run --server-args="-screen ${screenNumber}, ${pixels}" gulp test-selenium
-# xvfb-run --server-args="-screen 0, 1366x768x24" gulp test-selenium
-```
