@@ -8,70 +8,80 @@ export default deps(({ userId }) => ({
     deleteUser: `/users/${userId}/delete`,
     updateUser: `/users/${userId}/update`,
   },
-}))(class User extends React.Component {
-  static displayName = 'User';
+}))(
+  class User extends React.Component {
+    static displayName = 'User';
 
-  static propTypes = {
-    deleteUser: PropTypes.func,
-    rank: PropTypes.string,
-    updateUser: PropTypes.func,
-    userId: PropTypes.number,
-    userName: PropTypes.string,
-  };
-
-  constructor(props) {
-    super(props);
-    this.state = {
-      inputUserName: '',
-      inputRank: '',
+    static propTypes = {
+      deleteUser: PropTypes.func,
+      rank: PropTypes.string,
+      updateUser: PropTypes.func,
+      userId: PropTypes.number,
+      userName: PropTypes.string,
     };
-  }
 
-  updateInputUserName(ev) {
-    const inputUserName = ev.target.value;
-    this.setState({ inputUserName });
-  }
+    constructor(props) {
+      super(props);
+      this.state = {
+        inputUserName: '',
+        inputRank: '',
+      };
+    }
 
-  updateInputRank(ev) {
-    const inputRank = ev.target.value;
-    this.setState({ inputRank });
-  }
+    updateInputUserName(ev) {
+      const inputUserName = ev.target.value;
+      this.setState({ inputUserName });
+    }
 
-  updateUser({ userName, rank }) {
-    const { updateUser } = this.props;
-    updateUser({ userName, rank });
-    this.setState({
-      inputUserName: '',
-      inputRank: '',
-    });
-  }
+    updateInputRank(ev) {
+      const inputRank = ev.target.value;
+      this.setState({ inputRank });
+    }
 
-  render() {
-    const { userId, userName, rank } = this.props;
-    const { inputUserName, inputRank } = this.state;
-    return <div className='User'>
-      <div className='UserId'>{`User #${userId}`}</div>
-      <div className='UserName'>{`User Name: ${userName}`}</div>
-      <div className='UserRank'>{`User Rank: ${rank}`}</div>
-      <button onClick={() => this.props.deleteUser()}>{'X'}</button>
-      <div>
-        <input
-          id={`InputUserName-${userId}`}
-          onChange={(ev) => this.updateInputUserName(ev)}
-          placeholder={'Updated Name'}
-          value={inputUserName}
-        />
-        <input
-          id={`InputUserRank-${userId}`}
-          onChange={(ev) => this.updateInputRank(ev)}
-          placeholder={'Updated Rank'}
-          value={inputRank}
-        />
-        <button onClick={() => this.updateUser({
-          userName: inputUserName,
-          rank: inputRank,
-        })}>{'Update'}</button>
-      </div>
-    </div>;
+    updateUser({ userName, rank }) {
+      const { updateUser } = this.props;
+      updateUser({ userName, rank });
+      this.setState({
+        inputUserName: '',
+        inputRank: '',
+      });
+    }
+
+    render() {
+      const { userId, userName, rank } = this.props;
+      const { inputUserName, inputRank } = this.state;
+      return (
+        <div className="User">
+          <div className="UserId">{`User #${userId}`}</div>
+          <div className="UserName">{`User Name: ${userName}`}</div>
+          <div className="UserRank">{`User Rank: ${rank}`}</div>
+          <button onClick={() => this.props.deleteUser()}>{'X'}</button>
+          <div>
+            <input
+              id={`InputUserName-${userId}`}
+              onChange={(ev) => this.updateInputUserName(ev)}
+              placeholder={'Updated Name'}
+              value={inputUserName}
+            />
+            <input
+              id={`InputUserRank-${userId}`}
+              onChange={(ev) => this.updateInputRank(ev)}
+              placeholder={'Updated Rank'}
+              value={inputRank}
+            />
+            <button
+              onClick={() =>
+                this.updateUser({
+                  userName: inputUserName,
+                  rank: inputRank,
+                })
+              }
+            >
+              {'Update'}
+            </button>
+          </div>
+        </div>
+      );
+    }
   }
-});
+);

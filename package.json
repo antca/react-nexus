@@ -7,7 +7,9 @@
     "build": "babel lib --out-dir dist",
     "test:node": "mocha --require @babel/register lib/**/__tests__/node/**/*.js",
     "test:browser": "mocha -t 5000 --require @babel/register lib/**/__tests__/browser/**/*.js",
-    "test": "npm run test:node && npm run test:browser"
+    "test": "npm run test:node && npm run test:browser",
+    "lint": "eslint --ext js,jsx .",
+    "lint:fix": "npm run lint -- --fix"
   },
   "repository": {
     "type": "git",
@@ -30,11 +32,12 @@
     "@babel/preset-react": "^7.12.10",
     "@babel/register": "^7.12.10",
     "@koa/cors": "^3.1.0",
+    "babel-eslint": "^10.1.0",
     "babel-loader": "^8.2.2",
     "bluebird": "^3.1.1",
     "eslint": "^7.18.0",
-    "eslint-plugin-babel": "^5.3.1",
-    "eslint-plugin-react": "^7.22.0",
+    "eslint-config-prettier": "^7.2.0",
+    "eslint-plugin-prettier": "^3.3.1",
     "global-jsdom": "^7.0.0",
     "http-status-codes": "^2.1.4",
     "jsdom": "^16.4.0",
@@ -43,6 +46,7 @@
     "koa-router": "^10.0.0",
     "mocha": "^8.2.1",
     "nock": "^13.0.5",
+    "prettier": "^2.2.1",
     "puppeteer": "^5.5.0",
     "react": "^17.0.1",
     "react-dom": "^17.0.1",
