@@ -52,11 +52,11 @@
     "should": "^8.1.1",
     "sinon": "^1.17.3",
     "url": "^0.11.0",
-    "webpack": "^5.4.0"
+    "webpack": "^5.4.0",
+    "bluebird": "^3.1.1"
   },
   "dependencies": {
     "@babel/runtime": "^7.12.5",
-    "bluebird": "^3.1.1",
     "deep-equal": "^1.0.1",
     "isomorphic-fetch": "^2.2.1",
     "lodash": "^4.0.0",
