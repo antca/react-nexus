@@ -1,10 +1,4 @@
-/node_modules
-*.pid
-*.lock
-npm-debug.log
-/app
-/config
-/gulpfile.js
-/README.md
-!dist
+*
+!dist/**
 !package.json
+__tests__
